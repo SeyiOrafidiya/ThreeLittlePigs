@@ -170,7 +170,7 @@ The small pig rests on the door frame. &quot;Hm. You have good taste at least. A
 
 [[Yes I am-&gt;friendayo2]] +Friendliness
 [[No I&#39;m not-&gt;Aggression2ndpig2]] +Aggression
-[[Um...-&gt;Manipulation]] +Manipulation</tw-passagedata><tw-passagedata pid="16" name="Manipulation2ndpig" tags="" position="524,1022" size="100,100">Wolf scopes the house from afar. Approches house and takes a look at the back of the clay house.
+[[Um...-&gt;Manipulation2ndpig2]] +Manipulation</tw-passagedata><tw-passagedata pid="16" name="Manipulation2ndpig" tags="" position="554,1026" size="100,100">Wolf scopes the house from afar. Approches house and takes a look at the back of the clay house.
 Slips into house through the garden door
 spots pig in the living room watching tv and sees deed on kitchen wall...
 
@@ -337,7 +337,35 @@ NAME quickly turns away from the house and runs away
 
 NAME slinks away from the house
 
-[[]]</tw-passagedata><tw-passagedata pid="33" name="Aggression2ndpig2" tags="" position="602,1199" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[]]</tw-passagedata><tw-passagedata pid="33" name="Aggression2ndpig2" tags="" position="578,1226" size="100,100">&quot;No I&#39;m not&quot; NAME replies.
+
+NAME kicks the small pig into the hallway of the house.
+
+The startled pig scurries back into their home for safety.
+
+&quot;Get away from me you crazy wolf&quot;
+
+Name grabs the pig by his ankles and dangles him in the air. They open their mouth and swallows the pig in one full gulp
+
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="34" name="Manipulation2ndpig2" tags="" position="726,1275" size="100,100">&quot;Oh yeah me and Ayo go way back! Is it alright if i quickly use your bathroom&quot;
+
+Name detects the pigs hesitation and doubles down
+
+&quot;I promise you I won&#39;t take long or leave a mess. Please?&quot;
+
+After a few moments the pig gestures NAME in and they wobble to the guest bathroom.
+
+NAME pops their head out to check the hallway and spots the pigs deed on the wall.
+
+&quot;You done yet?&quot; The pig shouts from afar
+
+Taking the deed from the wall, NAME bellows
+
+&quot;Just washing my hands&quot;
+
+NAME surveys the hallway again before running out of the house as quick as they could
+
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata></tw-storydata>
 		<script>
 		(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";window.either=function(){for(var n=[],t=0;t<arguments.length;t++)if(arguments[t]instanceof Array)for(var r=0;r<arguments[t].length;r++)n.push(arguments[t][r]);else n.push(arguments[t]);return n[_.random(n.length-1)]},window.hasVisited=function(){var n=null;if(1==arguments.length)return null!=(n=window.story.passage(arguments[0]))&&window.story.history.includes(n.id);for(var t=0;t<arguments.length;t++)if(null==(n=window.story.passage(arguments[t]))||0==window.story.history.includes(n.id))return!1;return!0},window.visited=function(){for(var n=[],t=[],r=0;r<arguments.length;r++){var e=window.story.passage(arguments[r]);null!=e&&(t=window.story.history.filter(function(n){return n==e.id})),n.push(t.length)}return Math.min.apply(Math,n)},window.renderToSelector=function(n,t){var r=window.story.passage(t);null!=r&&$(n).html(r.render())},window.getStyles=function(){return $.when.apply($,$.map(arguments,function(n){return $.get(n,function(n){$("<style>"+n+"</style>").appendTo("head")})}))};
