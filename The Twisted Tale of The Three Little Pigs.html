@@ -26,14 +26,14 @@ Because of this wolf&#39;s intelligence, they have specific choices that lead th
 
 &lt;%= s.namePlayer %&gt; can see a house in the distance...
 
-[[Approach the house-&gt;See 1st Pig]]</tw-passagedata><tw-passagedata pid="3" name="See 1st Pig" tags="" position="399,426" size="100,100">As &lt;%= s.namePlayer %&gt; gets closer, they notice a small brittle house. It is slanted and severely unstable.
+[[Approach the house-&gt;See 1st Pig]]</tw-passagedata><tw-passagedata pid="3" name="See 1st Pig" tags="" position="397,426" size="100,100">As &lt;%= s.namePlayer %&gt; gets closer, they notice a small brittle house. It is slanted and severely unstable.
 
 &lt;%= s.namePlayer %&gt; knocks on the door and a small pig peeks out.
 
 He is wearing a beige straw hat with denim overalls. 
 
 [[Your house is terrible!-&gt;$Aggression]] +Aggression &lt;br&gt;
-[[Hello, I&#39;m $name-&gt;$Friendly]] +Friendliness &lt;br&gt;
+[[Hello, I&#39;m &lt;%= s.namePlayer %&gt;-&gt;$Friendly]] +Friendliness &lt;br&gt;
 [[Hi! This place is something-&gt;$Manipulation]] +Manipulation</tw-passagedata><tw-passagedata pid="4" name="$Aggression" tags="" position="201,399" size="100,100">Little Pig exclaims &quot;Who do you think you are?&quot;.
 
 &lt;%= s.namePlayer %&gt; retorts &quot;I&#39;m just calling it like I see it. There is no way you paid for someone to build this.&quot;.
@@ -44,15 +44,23 @@ After glancing at the frail house again, &lt;%= s.namePlayer %&gt; replies &quot
 
 The Little Pig pouts and closes the door.
 
+&lt;%
+	s.Aggressive = 5
+%&gt;
+
 [[Hold the door-&gt;Aggression2]]
 [[&quot;I&#39;m sorry about that!&quot;-&gt;FriendlyAgg]]
-[[&quot;Hear me out&quot;-&gt;ManipulationAgg]]</tw-passagedata><tw-passagedata pid="5" name="$Friendly" tags="" position="599,501" size="100,100">&quot;Sorry to disturb you&quot; $name explains, &quot;I&#39;ve seemed to have lost my way and I cannot find my home. I&#39;m $name by the way&quot;.
+[[&quot;Hear me out&quot;-&gt;ManipulationAgg]]</tw-passagedata><tw-passagedata pid="5" name="$Friendly" tags="" position="599,501" size="100,100">&quot;Sorry to disturb you&quot; &lt;%= s.namePlayer %&gt; explains, &quot;I&#39;ve seemed to have lost my way and I cannot find my home. I&#39;m &lt;%= s.namePlayer %&gt; by the way&quot;.
 
 The Little Pig peers at you but soon becomes composed once he takes in your demeanour.
 
 &quot;I&#39;m Ayo. Nice to meet &#39;cha&quot; He gestures towards his abode &quot;Come on in, I&#39;ll fix you a cuppa!&quot;
 
-Gratefully, $name accepts Ayo&#39;s kindness and enters the small home.
+Gratefully, &lt;%= s.namePlayer %&gt; accepts Ayo&#39;s kindness and enters the small home.
+
+&lt;%
+	s.Friendly = 1
+%&gt;
 
 [[Enter house-&gt;Inside Small home]] +Friendliness &lt;br&gt;
 [[Eat Ayo-&gt;Aggression3]] + Aggression &lt;br&gt;
@@ -72,146 +80,195 @@ Ayo takes a step back &quot;I don&#39;t think-&quot;
 
 Ayo ushers you in.
 
-[[Enter House-&gt;Manipulation3]] +Manipulation
+&lt;%
+	s.Manipulation = 10
+%&gt;
+
+[[Enter House-&gt;Manipulation4]] +Manipulation
 [[Enter House-&gt;Inside Small home]] +Friendliness
-[[Eat Ayo-&gt;Aggression3]] + Aggression</tw-passagedata><tw-passagedata pid="7" name="Aggression2" tags="" position="100,600" size="100,100">$name stick&#39;s their foot at the entrance of the Little Pig&#39;s door and forces their way into the small home.
+[[Eat Ayo-&gt;Aggression3]] + Aggression</tw-passagedata><tw-passagedata pid="7" name="Aggression2" tags="" position="100,600" size="100,100">&lt;%= s.namePlayer %&gt; stick&#39;s their foot at the entrance of the Little Pig&#39;s door and forces their way into the small home.
 
-The Little Pig screams &quot;What-&quot;. Before he could finish what he was saying $name has swallowed the pig in one gulp.
+The Little Pig screams &quot;What-&quot;. Before he could finish what he was saying &lt;%= s.namePlayer %&gt; has swallowed the pig in one gulp.
 
-Without hesitation, $name then destroys the house, leaving not one piece of furniture in tact.
+Without hesitation, &lt;%= s.namePlayer %&gt; then destroys the house, leaving not one piece of furniture in tact.
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="8" name="FriendlyAgg" tags="" position="247,600" size="100,100">&quot;I don&#39;t want you to take offence to what I&#39;ve just said. It was a bad joke, I won&#39;t make that mistake again&quot;
+&lt;%
+	s.Aggressive += 5
+%&gt;
 
-The Little Pig glowers at $name.
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="8" name="FriendlyAgg" tags="" position="246,599" size="100,100">&quot;I don&#39;t want you to take offence to what I&#39;ve just said. It was a bad joke, I won&#39;t make that mistake again&quot;
 
-&quot;Again I&#39;m really sorry about that&quot; $name rambles, while taking on a submissive demeanor, &quot;I&#39;ll leave you to enjoy the rest of your day.&quot;
+The Little Pig glowers at &lt;%= s.namePlayer %&gt;.
 
-$name turns around and runs away from the small house.
+&quot;Again I&#39;m really sorry about that&quot; &lt;%= s.namePlayer %&gt; rambles, taking on a submissive demeanor, &quot;I&#39;ll leave you to enjoy the rest of your day.&quot;
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="9" name="ManipulationAgg" tags="" position="400,601" size="100,100">$name obstructs the door before it closes. &quot;You don&#39;t actually believe I was being serious... right?&quot;
+&lt;%= s.namePlayer %&gt; turns around and runs away from the small house.
 
-The little pig throws $name a dirty look.
+&lt;%
+	s.Friendly = 1
+%&gt;
+
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="9" name="ManipulationAgg" tags="" position="400,601" size="100,100">&lt;%= s.namePlayer %&gt; obstructs the door before it closes. &quot;You don&#39;t actually believe I was being serious... right?&quot;
+
+The little pig throws &lt;%= s.namePlayer %&gt; a dirty look.
 
 &quot;I&#39;m helping you be aware of the deginerates of the world. You&#39;re easy to read which makes you a target&quot;
 
-While the small pig takes the statement into consideration, $name scans the interior of the abode and spots a family of piggies.
+While the small pig takes the statement into consideration, &lt;%= s.namePlayer %&gt; scans the interior of the abode and spots a family of piggies.
 
-&quot;That photo over there, who is-&quot; $name is interrupted by the little pig blocking the entrance to his home.
+&quot;That photo over there, who is-&quot; &lt;%= s.namePlayer %&gt; is interrupted by the little pig blocking the entrance to his home.
 
 &quot;Now listen ya big wolf!&quot; The small pig puffs &quot;I want you off my property right now&quot;
 
-Sensing the pigs stubborness, $name cuts their losses and walks away from the lot.
+Sensing the pigs stubborness, &lt;%= s.namePlayer %&gt; cuts their losses and walks away from the lot.
 
+&lt;%
+	s.Manipulation = 10
+%&gt;
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="10" name="2nd Pig" tags="" position="401,897" size="100,100">NAME approaches a clay house. It has been built better than the last pig&#39;s house, but nothing incredible.
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="10" name="2nd Pig" tags="" position="402,896" size="100,100">&lt;%= s.namePlayer %&gt; approaches a clay house. It has been built better than the last pig&#39;s house, but nothing incredible.
 
-Peeking through the window, NAME sees a pig watching tv. They are slouched on their couch wearing a simple white t-shirt with denim jeans.
+Peeking through the window, &lt;%= s.namePlayer %&gt; sees a pig watching tv. They are slouched on their couch wearing a simple white t-shirt with denim jeans.
+
 
 [[Slam on door-&gt;Aggressive2ndpig]] +Aggression
 [[Knock on door-&gt;Friendly2ndPig]] +Friendliness
-[[Observe-&gt;Manipulation2ndpig]] +Manipulation</tw-passagedata><tw-passagedata pid="11" name="Inside Small home" tags="" position="870,751" size="100,100">Ayo heads to the kithen to make a cup of tea while $name takes a seat.
+[[Observe-&gt;Manipulation2ndpig]] +Manipulation</tw-passagedata><tw-passagedata pid="11" name="Inside Small home" tags="" position="908,500" size="100,100">Ayo heads to the kithen to make a cup of tea while &lt;%= s.namePlayer %&gt; takes a seat.
 
 &quot;Such a quaint home. Do you get lonely?&quot;
 
 &quot;Sometimes&quot; Ayo  pauses before continuing &quot;But my siblings come to see me now and then so it&#39;s not too lonely.&quot; 
 
-The small pig gestures to a pic with their family and $name gushes over the sight of it.
+The small pig gestures to a pic with their family and &lt;%= s.namePlayer %&gt; gushes over the sight of it.
 
 &quot;You guys are so cute&quot;
 
-$name and Ayo enjoy each others company for the next half an hour before $name states that they need to go
+&lt;%= s.namePlayer %&gt; and Ayo enjoy each others company for the next half an hour before &lt;%= s.namePlayer %&gt; states that they need to go
 
 &quot;Thank you for allowing me into your home. I promise I will come again&quot;
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="12" name="Aggression3" tags="" position="727,700" size="100,100">Ayo screams &quot;What-&quot;. Before he could finish what he was saying $name swallows the pig in one big gulp.
+&lt;%
+	s.Friendly += 1
+%&gt;
 
-Without hesitation, $name then destroys the house, leaving not one piece of furniture in tact.
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="12" name="Aggression3" tags="" position="727,700" size="100,100">Ayo screams &quot;What-&quot;. Before he could finish what he was saying &lt;%= s.namePlayer %&gt; swallows the pig in one big gulp.
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="13" name="Manipulation3" tags="" position="975,651" size="100,100">$name scans the interior of the abode and spots a family of piggies.
+Without hesitation, &lt;%= s.namePlayer %&gt; then destroys the house, leaving not one piece of furniture in tact.
 
-&quot;That photo over there, who is that&quot; $name asks.
+&lt;%
+	s.Aggressive = 5
+%&gt;
+
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="13" name="Manipulation3" tags="" position="950,356" size="100,100">&lt;%= s.namePlayer %&gt; scans the interior of the abode and spots a family of piggies.
+
+&quot;That photo over there, who is that&quot; &lt;%= s.namePlayer %&gt; asks.
 
 Ayo starts to ramble about his beloved siblings and dearest mother.
 
-$name&#39;s eyes land on a deed placed on the wall. While Ayo drones on, $name sneakily swipes the deed.
+&lt;%= s.namePlayer %&gt;&#39;s eyes land on a deed placed on the wall. While Ayo drones on, &lt;%= s.namePlayer %&gt; sneakily swipes the deed.
 
-&quot;I&#39;m going to stop you there&quot; $name glances at the door &quot;I need to head out and finish my errand but thank you for your time. I&#39;ll be back&quot;
+&quot;I&#39;m going to stop you there&quot; &lt;%= s.namePlayer %&gt; glances at the door &quot;I need to head out and finish my errand but thank you for your time. I&#39;ll be back&quot;
 
-Just like that, $name speed walks away from the small home
+Just like that, &lt;%= s.namePlayer %&gt; speed walks away from the small home
 
+&lt;%
+	s.Manipulation = 10
+%&gt;
 
-[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="14" name="Aggressive2ndpig" tags="" position="275,1026" size="100,100">NAME slams on the front door until a meek voice interrupts them
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata><tw-passagedata pid="14" name="Aggressive2ndpig" tags="" position="274,1026" size="100,100">&lt;%= s.namePlayer %&gt; slams on the front door until a meek voice interrupts them
 
 &quot;What the hell?!&quot;
 
-&quot;This was the best you could do?&quot; NAME snarls at the door &quot;You shouldn&#39;t have bothered putting this trash together in the first place!&quot;
+&quot;This was the best you could do?&quot; &lt;%= s.namePlayer %&gt; snarls at the door &quot;You shouldn&#39;t have bothered putting this trash together in the first place!&quot;
 
 The meek voice replies &quot;Go away you big bad wolf&quot;
 
-&quot;I&#39;ll huff and I&#39;ll puff and kick your house in&quot; screamed NAME
+&quot;I&#39;ll huff and I&#39;ll puff and kick your house in&quot; screamed &lt;%= s.namePlayer %&gt;
 
 &quot;I&#39;d like to see you try&quot;
 
+&lt;%
+	s.Aggressive += 5
+%&gt;
+
 [[Kick door in!-&gt;Aggressive2ndpig2]] +Aggression
 [[I&#39;m sorry-&gt;Frendly2ndpig]]
-[[Wolves are coming!-&gt;Manipulative2ndPig]]</tw-passagedata><tw-passagedata pid="15" name="Friendly2ndPig" tags="" position="401,1024" size="100,100">NAME knocks on the front door.
+[[Wolves are coming!-&gt;Manipulative2ndPig]]</tw-passagedata><tw-passagedata pid="15" name="Friendly2ndPig" tags="" position="401,1023" size="100,100">&lt;%= s.namePlayer %&gt; knocks on the front door.
 
 A voice squeaks &quot;Who is it&quot;
 
-&quot;Hi I&#39;m NAME Wolfe&quot;
+&quot;Hi I&#39;m &lt;%= s.namePlayer %&gt; Wolfe&quot;
 
 A plump pigs head pops outs, &quot;What do you want?&quot;.
 
-NAME gathers themselves and explains their encounter with her brother Ayo. 
+&lt;%= s.namePlayer %&gt; gathers themselves and explains their encounter with her brother Ayo. 
 
-&quot;I ran into Ayo and his home was nice&quot; NAME sneaks a peek into her home &quot;I can see that carpentry runs in the family&quot;
+&quot;I ran into Ayo and his home was nice&quot; &lt;%= s.namePlayer %&gt; sneaks a peek into her home &quot;I can see that carpentry runs in the family&quot;
 
 The small pig rests on the door frame. &quot;Hm. You have good taste at least. Are you a friend of Ayo?
 
+&lt;%
+	s.Friendly += 1
+%&gt;
+
 [[Yes I am-&gt;friendayo2]] +Friendliness
 [[No I&#39;m not-&gt;Aggression2ndpig2]] +Aggression
-[[Um...-&gt;Manipulation2ndpig2]] +Manipulation</tw-passagedata><tw-passagedata pid="16" name="Manipulation2ndpig" tags="" position="553,1026" size="100,100">After spotting the house from afar, NAME approaches it and takes in the well-built clay home.
+[[Um...-&gt;Manipulation2ndpig2]] +Manipulation</tw-passagedata><tw-passagedata pid="16" name="Manipulation2ndpig" tags="" position="553,1026" size="100,100">After spotting the house from afar, &lt;%= s.namePlayer %&gt; approaches it and takes in the well-built clay home.
 
-NAME spots an open back door and slips into the abode quietly. Noticing the ambient sounds of the television, they see a plump pig slouch on an arm chair.
+&lt;%= s.namePlayer %&gt; spots an open back door and slips into the abode quietly. Noticing the ambient sounds of the television, they see a plump pig slouch on an arm chair.
 
-NAME observes the room they&#39;re in and comes across a deed on the wall.
+&lt;%= s.namePlayer %&gt; observes the room they&#39;re in and comes across a deed on the wall.
+
+&lt;%
+	s.Manipulation += 10
+%&gt;
 
 [[Steal deed-&gt;sneakinpig3]] +Manipulation
 [[Turn back-&gt;friendly2ndpig2]] +Friendliness
-[[Sneak up on the pig-&gt;aggressive2ndpig2]] +Aggression</tw-passagedata><tw-passagedata pid="17" name="Aggressive2ndpig2" tags="" position="175,1151" size="100,100">NAME kicks the front door and gains access to the living room. They smash the TV and flip over the couch. After some time, NAME catches the scent of sweat and follows it.
+[[Sneak up on the pig-&gt;aggressive2ndpig2]] +Aggression</tw-passagedata><tw-passagedata pid="17" name="Aggressive2ndpig2" tags="" position="175,1151" size="100,100">&lt;%= s.namePlayer %&gt; kicks the front door and gains access to the living room. They smash the TV and flip over the couch. After some time, &lt;%= s.namePlayer %&gt; catches the scent of sweat and follows it.
 
-Standing at the door of the bathroom, NAME finds the source of the scent and drags it&#39;s sharp claws along the panes of the door.
+Standing at the door of the bathroom, &lt;%= s.namePlayer %&gt; finds the source of the scent and drags it&#39;s sharp claws along the panes of the door.
 
-&quot;Little pig, come out and play&quot; NAME growls.
+&quot;Little pig, come out and play&quot; &lt;%= s.namePlayer %&gt; growls.
 
-As quick as a flash, the pig rushes out of the bathroom, knocking NAME to the floor. The little pig arms itself with the toilet brush.
+As quick as a flash, the pig rushes out of the bathroom, knocking &lt;%= s.namePlayer %&gt; to the floor. The little pig arms itself with the toilet brush.
 
-$name gathers its senses and lunges at the pig. They swat away the toilet brush and picks up the defenseless pig with ease. NAME swallows the pig in one full gulp.
+$name gathers its senses and lunges at the pig. They swat away the toilet brush and picks up the defenseless pig with ease. &lt;%= s.namePlayer %&gt; swallows the pig in one full gulp.
 
-Without hesitation, $name then destroys the rest of the house, leaving not one piece of furniture in tact.
+Without hesitation, &lt;%= s.namePlayer %&gt; then destroys the rest of the house, leaving not one piece of furniture in tact.
 
-[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="18" name="3rd Pig" tags="" position="101,1500" size="100,100">A grand house emerges from the distance. NAME takes in the well built brick house and admires the rose garden dressed at the front of the house.
+&lt;%
+	s.Aggressive += 5
+%&gt;
 
-NAME knocks on the large door and a bold voice speaks through the intercom.
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="18" name="3rd Pig" tags="" position="101,1501" size="100,100">A grand house emerges from the distance. &lt;%= s.namePlayer %&gt; takes in the well built brick house and admires the rose garden dressed at the front of the house.
+
+&lt;%= s.namePlayer %&gt; knocks on the large door and a bold voice speaks through the intercom.
 
 &quot;State your business&quot;
 
 [[I&#39;m gonna blow this place up!-&gt;LastAggression]] +Aggression
-[[]]
-[[]]</tw-passagedata><tw-passagedata pid="19" name="friendayo2" tags="" position="301,1148" size="100,100">&quot;Yes I am friends with ayo and I was just with them&quot;
+[[Say hi-&gt;LastFriendly]]
+[[Search house-&gt;LastManipulative]]</tw-passagedata><tw-passagedata pid="19" name="friendayo2" tags="" position="301,1148" size="100,100">&quot;Yes I am friends with ayo and I was just with them&quot;
 
 &quot;Oh cool. If you&#39;re cool with Ayo then you&#39;re cool with me&quot;
-The pig extends their hand to greet NAME.
+The pig extends their hand to greet &lt;%= s.namePlayer %&gt;.
 
 I&#39;m Tokunbo by the way. I just made plans with Ayo for a late brunch with our sister Anjola. You&#39;re welcome to join us&quot;
 
 &quot;I would love to come. I will see you guys later on!&quot; Waves his goodbyes and walks away from the house
 
+&lt;%
+	s.Friendly += 1
+%&gt;
 
-[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="20" name="sneakinpig3" tags="" position="425,1149" size="100,100">NAME swivels their head to take a cautious look at the pig. Reassured that the small pig is enamoured with the blaring show on the screen, NAME takes the deed from the wall and slinks out of the house.
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="20" name="sneakinpig3" tags="" position="425,1149" size="100,100">&lt;%= s.namePlayer %&gt; swivels their head to take a cautious look at the pig. Reassured that the small pig is enamoured with the blaring show on the screen, &lt;%= s.namePlayer %&gt; takes the deed from the wall and slinks out of the house.
 
+&lt;%
+	s.Manipulation += 10
+%&gt;
 
-[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="21" name="LastAggression" tags="" position="99,1624" size="100,100">&quot;I&#39;ll huff and I&#39;ll puff and blow your house in!&quot; NAME bellows.
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="21" name="LastAggression" tags="" position="98,1624" size="100,100">&quot;I&#39;ll huff and I&#39;ll puff and blow your house in!&quot; NAME bellows.
 
 The intercom replies, &quot;...You&#39;re kidding right?&quot;
 
@@ -219,56 +276,77 @@ NAME quickly lunges for the window sill, only to find out the window is locked.
 
 The eldest pig watches the failed attempt on their monitor and notices NAME sprint across the screen.
 
+&lt;%
+	s.Aggressive += 5
+%&gt;
 
 [[Climb onto the roof-&gt;LastAggression2]]
 [[Apologise-&gt;Friendly3rdpig]]
-[[Laugh it off-&gt;Manipulation3rdPig]]</tw-passagedata><tw-passagedata pid="22" name="LastFriendly" tags="" position="249,1624" size="100,100">&quot;I&#39;m NAME Wolfe. I&#39;ve ran across your two brothers and wanted to say hi&quot;
+[[Laugh it off-&gt;Manipulation3rdPig]]</tw-passagedata><tw-passagedata pid="22" name="LastFriendly" tags="" position="249,1624" size="100,100">&quot;I&#39;m &lt;%= s.namePlayer %&gt; Wolfe. I&#39;ve ran across your two brothers and wanted to say hi&quot;
 
 &quot;... You&#39;ve said hi&quot; The intercom replies curtly.
 
-&quot;I just thought it would be polite to introduce myself since Tokunbo is getting everyone together for brunch&quot; NAME responds brushing off the pigs coldness.
+&quot;I just thought it would be polite to introduce myself since Tokunbo is getting everyone together for brunch&quot; &lt;%= s.namePlayer %&gt; responds brushing off the pigs coldness.
 
 The well-dressed pig cautiously opens the door and states,
 
 &quot;Not too many people still have manners&quot;
 
+&lt;%
+	s.Friendly += 1
+%&gt;
+
 [[&quot;You&#39;re right about that&quot;-&gt;LastFriendly2]] +Friendliness
 [[Hit the door-&gt;Aggression3rdpid2]]
-[[&quot;You&#39;ve met me&quot;-&gt;Manipulation3rdpig2]]</tw-passagedata><tw-passagedata pid="23" name="LastManipulative" tags="" position="401,1624" size="100,100">NAME looks around the perimeter of the house, trying to find any weaknesses in the exterior.
+[[&quot;You&#39;ve met me&quot;-&gt;Manipulation3rdpig2]]</tw-passagedata><tw-passagedata pid="23" name="LastManipulative" tags="" position="401,1624" size="100,100">&lt;%= s.namePlayer %&gt; looks around the perimeter of the house, trying to find any weaknesses in the exterior.
 
 A loud voice from the intercom exclaims &quot;What do you want?&quot;
 
-NAME explains &quot;I&#39;m a friend of the family. I just ran into your siblings&quot;
+&lt;%= s.namePlayer %&gt; explains &quot;I&#39;m a friend of the family. I just ran into your siblings&quot;
 
 &quot;I don&#39;t know who you are&quot;
 
+&lt;%
+	s.Manipulation += 10
+%&gt;
+
 [[Introduce yourself-&gt;LastManipulative2]] +Manipulation
 [[Explain yourself-&gt;Friendly3rdpig3]]
-[[Hit the door-&gt;Aggressive3rdpig3]]</tw-passagedata><tw-passagedata pid="24" name="LastAggression2" tags="" position="198,1799" size="100,100">NAME climbs onto a dislodged brick and ascends the house.
+[[Hit the door-&gt;Aggressive3rdpig3]]</tw-passagedata><tw-passagedata pid="24" name="LastAggression2" tags="" position="198,1799" size="100,100">&lt;%= s.namePlayer %&gt; climbs onto a dislodged brick and ascends the house.
 
 After noticing the wolfs intentions, the eldest pig scurries to the firplace and lights the fire.
 
-NAME reaches the roof of the house, slides down the chimney and meets a firey blaze. The wolf howls in pain and rolls onto the floor in an attempt to get rid of the flames.
+&lt;%= s.namePlayer %&gt; reaches the roof of the house, slides down the chimney and meets a firey blaze. The wolf howls in pain and rolls onto the floor in an attempt to get rid of the flames.
 
 The pig takes advantage of the situation and swings at the wolf with a metal bat.
 
-NAME roars after the first and second hit, but by the third swing, NAME counters and grabs the bat. The pig tries to get back control of the bat but the wolfs strength is overwhelming.
+&lt;%= s.namePlayer %&gt; roars after the first and second hit, but by the third swing, NAME counters and grabs the bat. The pig tries to get back control of the bat but the wolfs strength is overwhelming.
 
-Recognising that the tide were changing, the little pig makes a last ditch effort to make a break for the front door. NAME pounces on the pig and swallows the pig whole.
+Recognising that the tide were changing, the little pig makes a last ditch effort to make a break for the front door. &lt;%= s.namePlayer %&gt; pounces on the pig and swallows the pig whole.
 
-$name then destroys the rest of the house, leaving not one piece of furniture in tact.</tw-passagedata><tw-passagedata pid="25" name="LastFriendly2" tags="" position="351,1801" size="100,100">&quot;Well I&#39;m not in the majority&quot; NAME smiles.
+&lt;%= s.namePlayer %&gt; then destroys the rest of the house, leaving not one piece of furniture in tact.
 
-The pig peers at NAME and states &quot;I&#39;m Tokunbo. You mentioned a brunch?&quot;
+&lt;%
+	s.Aggressive += 5
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="25" name="LastFriendly2" tags="" position="352,1802" size="100,100">&quot;Well I&#39;m not in the majority&quot; &lt;%= s.namePlayer %&gt; smiles.
+
+The pig peers at &lt;%= s.namePlayer %&gt; and states &quot;I&#39;m Tokunbo. You mentioned a brunch?&quot;
 
 &quot;Yes. Time is to be put together by Anjola but I thought I could let you know in person and introduce myself&quot;
 
 &quot;Thanks for letting me know. I&#39;ll see you later?&quot; Tokunbo questions.
 
-NAME nods in response and waves goodbye
+&lt;%= s.namePlayer %&gt; nods in response and waves goodbye
 
-[[]]</tw-passagedata><tw-passagedata pid="26" name="LastManipulative2" tags="" position="500,1802" size="100,100">&quot;Of course you don&#39;t. That&#39;s why I&#39;ve come to introduce myself. I&#39;m NAME Wolfe&quot;
+&lt;%
+	s.Friendly += 1
+%&gt;
 
-After no response from the intercom, NAME carries on.
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="26" name="LastManipulative2" tags="" position="502,1800" size="100,100">&quot;Of course you don&#39;t. That&#39;s why I&#39;ve come to introduce myself. I&#39;m &lt;%= s.namePlayer %&gt; Wolfe&quot;
+
+After no response from the intercom, &lt;%= s.namePlayer %&gt; carries on.
 
 &quot;We&#39;ve become real good friends, me and your brothers. Real good pigs.&quot;
 
@@ -276,64 +354,76 @@ A well-dressed pig opens the door and states,
 
 &quot;Yup that&#39;s family. My name is I&#39;m Tokunbo&quot;
 
-&quot;The brunch should be around noon-ish&quot; NAME glances towards the interior of the house &quot;The location hasn&#39;t been set yet but your place doesn&#39;t look too shabby at all&quot;
+&quot;The brunch should be around noon-ish&quot; &lt;%= s.namePlayer %&gt; glances towards the interior of the house &quot;The location hasn&#39;t been set yet but your place doesn&#39;t look too shabby at all&quot;
 
 Tokunbo scoffs quietly &quot;My house is of a higher quality than most and would be the best place for the brunch&quot;
 
-&quot;I can judge as a guest, which house would be best out of the three of you. If that is OK?&quot; NAME asks.
+&quot;I can judge as a guest, which house would be best out of the three of you. If that is OK?&quot; &lt;%= s.namePlayer %&gt; asks.
 
 Tokunbo gestures for the wolf to come in and guides them to the dining room.
 
-Smiling to themself, NAME enters the abode devising a plan to steal the house deed.
+Smiling to themself, &lt;%= s.namePlayer %&gt; enters the abode devising a plan to steal the house deed.
 
+&lt;%
+	s.Manipulation += 10
+%&gt;
 
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="27" name="Aggressive Ending" tags="" position="400,2100" size="100,100">&lt;%= s.namePlayer %&gt; relishes in the memories of their destructive behaviour and realises they have been smiling the entire time.
 
-</tw-passagedata><tw-passagedata pid="27" name="Aggressive Ending" tags="" position="400,1999" size="100,100">NAME relishes in the memories of their destructive behaviour and realises they have been smiling the entire time.
-
-After nestling into the debris of the pig&#39;s house, NAME takes a well deserved nap from the tiring day they have had.
+After nestling into the debris of the pig&#39;s house, &lt;%= s.namePlayer %&gt; takes a well deserved nap from the tiring day they have had.
 
 And they lived selfishly ever after!
 
 
-THE END</tw-passagedata><tw-passagedata pid="28" name="Friendly ending" tags="" position="800,1999" size="100,100">The Three Pigs and NAME all gather in Tokunbo&#39;s house, enjoying the sun and each others company.
+THE END</tw-passagedata><tw-passagedata pid="28" name="Friendly ending" tags="" position="601,2099" size="100,100">The Three Pigs and &lt;%= s.namePlayer %&gt; all gather in Tokunbo&#39;s house, enjoying the sun and each others company.
 
-Anjola reminisces on his first impressions of NAME laughs at the fact they thought NAME was a big dumb hungry wolf.
+Anjola reminisces on his first impressions of &lt;%= s.namePlayer %&gt;, laughing at the fact that they thought &lt;%= s.namePlayer %&gt; was a big dumb hungry wolf.
 
-Tokunbo mentions that she can&#39;t wait for the next get together
-
-
-And they lived happily ever after!</tw-passagedata><tw-passagedata pid="29" name="Manipulative Ending" tags="" position="1201,1999" size="100,100">NAME uses the deed they stole from all three pigs to legally announce themselves as their landlord.
-
-The three pigs fought against this but it was too little too late. Without the proof of ownership, NAME owned all the pigs house.
-
-Soon after, NAME makes the pigs aware that they will be increasing the rent and whoever cannot pay will be offered accomodation at the Tokunbo&#39;s house, which had been modified to a shared house.
-
-Now with the extra income, NAME dreamed of the future where they expand their real estate to build apartments for the other animals, at the expense of the three little pigs.
+Tokunbo mentions that she can&#39;t wait for the next get together.
 
 
-And NAME lived weathily ever after!</tw-passagedata><tw-passagedata pid="30" name="Manipulation3rdPig" tags="" position="0,1749" size="100,100">The pig watches the figure dart across the screen and soon after comes back on screen with a child-like grin.
+And they lived happily ever after!</tw-passagedata><tw-passagedata pid="29" name="Manipulative Ending" tags="" position="800,2100" size="100,100">&lt;%= s.namePlayer %&gt; uses the deed they stole from all three pigs to legally announce themselves as their landlord.
+
+The three pigs fought against this but it was too little too late. Without the proof of ownership, &lt;%= s.namePlayer %&gt; owned all the pigs house.
+
+Soon after, &lt;%= s.namePlayer %&gt; makes the pigs aware that they will be increasing the rent and whoever cannot pay will be offered accomodation at the Tokunbo&#39;s house, which had been modified to a shared house.
+
+Now with the extra income, &lt;%= s.namePlayer %&gt; dreamed of the future where they expand their real estate to build apartments for the other animals, at the expense of the three little pigs.
+
+
+And &lt;%= s.namePlayer %&gt; lived weathily ever after!</tw-passagedata><tw-passagedata pid="30" name="Manipulation3rdPig" tags="" position="0,1750" size="100,100">The pig watches the figure dart across the screen and soon after comes back on screen with a child-like grin.
 
 &quot;I gotcha! You thought I was trying to forcefully get into your house right?&quot;
 
 &quot;You were just trying to&quot;
 
-NAME chuckled &quot;No no, it was a small prank. Anyway your brothers have invited you for brunch. Join us!&quot;
+&lt;%= s.namePlayer %&gt; chuckled &quot;No no, it was a small prank. Anyway your brothers have invited you for brunch. Join us!&quot;
 
 &quot;You know Ayo and Anjola?&quot; questions the pig.
 
 &quot;&#39;Course I do. Just passing by to let you know. I&#39;ll be on my way&quot;
 
-NAME waves goodbye before turning away from the intercom
+&lt;%= s.namePlayer %&gt; waves goodbye before turning away from the intercom
 
-</tw-passagedata><tw-passagedata pid="31" name="Frendly2ndpig" tags="" position="99,1001" size="100,100">&quot;You know what, I&#39;m sorry. I don&#39;t know what came over me&quot; NAME apologises.
+&lt;%
+	s.Manipulation += 10
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]
+
+</tw-passagedata><tw-passagedata pid="31" name="Frendly2ndpig" tags="" position="100,1001" size="100,100">&quot;You know what, I&#39;m sorry. I don&#39;t know what came over me&quot; &lt;%= s.namePlayer %&gt; apologises.
 
 &quot;No. Keep that same energy. You said you&#39;ll kick my door in and I said I would like to see you try!&quot;
 
 The wolf squirms  &quot;Look, I&#39;m really really sorry&quot;.
 
-NAME quickly turns away from the house and runs away
+&lt;%= s.namePlayer %&gt; quickly turns away from the house and runs away
 
-[[]]</tw-passagedata><tw-passagedata pid="32" name="Manipulative2ndPig" tags="" position="24,877" size="100,100">NAME and the pig are silent for a while until the pig shouts
+&lt;%
+	s.Friendly += 1
+%&gt;
+
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="32" name="Manipulative2ndPig" tags="" position="24,877" size="100,100">&lt;%= s.namePlayer %&gt; and the pig are silent for a while until the pig shouts
 
 &quot;I know you&#39;re still there. I can see your shadow&quot;
 
@@ -349,47 +439,65 @@ NAME quickly turns away from the house and runs away
 
 &quot;GO! NOW!&quot;
 
-NAME slinks away from the house
+&lt;%= s.namePlayer %&gt; slinks away from the house
 
-[[]]</tw-passagedata><tw-passagedata pid="33" name="Aggression2ndpig2" tags="" position="578,1226" size="100,100">&quot;No I&#39;m not&quot; NAME replies.
+&lt;%
+	s.Manipulation += 10
+%&gt;
 
-NAME kicks the small pig into the hallway of the house.
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="33" name="Aggression2ndpig2" tags="" position="578,1226" size="100,100">&quot;No I&#39;m not&quot; &lt;%= s.namePlayer %&gt; replies.
+
+&lt;%= s.namePlayer %&gt; kicks the small pig into the hallway of the house.
 
 The startled pig scurries back into their home for safety.
 
 &quot;Get away from me you crazy wolf&quot;
 
-Name grabs the pig by his ankles and dangles him in the air. They open their mouth and swallows the pig in one full gulp
+&lt;%= s.namePlayer %&gt; grabs the pig by his ankles and dangles him in the air. They open their mouth and swallows the pig in one full gulp
+
+&lt;%
+	s.Aggressive += 5
+%&gt;
 
 [[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="34" name="Manipulation2ndpig2" tags="" position="726,1275" size="100,100">&quot;Oh yeah me and Ayo go way back! Is it alright if i quickly use your bathroom&quot;
 
-Name detects the pigs hesitation and doubles down
+&lt;%= s.namePlayer %&gt; detects the pigs hesitation and doubles down
 
 &quot;I promise you I won&#39;t take long or leave a mess. Please?&quot;
 
-After a few moments the pig gestures NAME in and they wobble to the guest bathroom.
+After a few moments the pig gestures &lt;%= s.namePlayer %&gt; in and they wobble to the guest bathroom.
 
-NAME pops their head out to check the hallway and spots the pigs deed on the wall.
+&lt;%= s.namePlayer %&gt; pops their head out to check the hallway and spots the pigs deed on the wall.
 
 &quot;You done yet?&quot; The pig shouts from afar
 
-Taking the deed from the wall, NAME bellows
+Taking the deed from the wall, &lt;%= s.namePlayer %&gt; bellows
 
 &quot;Just washing my hands&quot;
 
-NAME surveys the hallway again before running out of the house as quick as they could
+&lt;%= s.namePlayer %&gt; surveys the hallway again before running out of the house as quick as they could
 
-[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="35" name="friendly2ndpig2" tags="" position="825,1001" size="100,100">NAME swiftly turns around and exits the house from the back door.
+&lt;%
+	s.Manipulation += 10
+%&gt;
+
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="35" name="friendly2ndpig2" tags="" position="825,1001" size="100,100">&lt;%= s.namePlayer %&gt; swiftly turns around and exits the house from the back door.
 
 They take one last look at the home, regretful of their decision, and runs away.
 
+&lt;%
+	s.Friendly += 1
+%&gt;
 
-[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="36" name="aggressive2ndpig2" tags="" position="724,1124" size="100,100">NAME slowly creeped towards the distracted pig. Once they were close enough, the wolf growls into their ear.
+[[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="36" name="aggressive2ndpig2" tags="" position="724,1124" size="100,100">&lt;%= s.namePlayer %&gt; slowly creeped towards the distracted pig. Once they were close enough, the wolf growls into their ear.
 
 &quot;Let&#39;s play little pig&quot;
 
-The pig struggles against NAME&#39;s chokehold, while NAME lifts him closers to their mouth and swallows him in one full gulp
+The pig struggles against &lt;%= s.namePlayer %&gt;&#39;s chokehold, while &lt;%= s.namePlayer %&gt; lifts him closers to their mouth and swallows him in one full gulp
 
+&lt;%
+	s.Aggressive += 5
+%&gt;
 
 [[Look across the horizon-&gt;3rd Pig]]</tw-passagedata><tw-passagedata pid="37" name="Friendly3rdpig" tags="" position="53,1900" size="100,100">&quot;I&#39;d like to apologise for my previous actions&quot;
 
@@ -399,29 +507,51 @@ The pig struggles against NAME&#39;s chokehold, while NAME lifts him closers to 
 
 &quot;... You&#39;ve apologised.&quot;
 
-NAME takes the bluntness as a signal to leave and obliges.
+&lt;%= s.namePlayer %&gt; takes the bluntness as a signal to leave and obliges.
 
-</tw-passagedata><tw-passagedata pid="38" name="Friendly3rdpig3" tags="" position="704,1549" size="100,100">&quot;I&#39;m NAME and I&#39;ve just met your siblings Ayo and Anjola. They invited me to brunch later and I wanted to personally invite you&quot;
+&lt;%
+	s.Friendly += 1
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="38" name="Friendly3rdpig3" tags="" position="704,1549" size="100,100">&quot;I&#39;m &lt;%= s.namePlayer %&gt; and I&#39;ve just met your siblings Ayo and Anjola. They invited me to brunch later and I wanted to personally invite you&quot;
 
 &quot;OK... Thanks for letting me know.&quot;
 
-NAME apologises for earlier and quickly leaves the premises</tw-passagedata><tw-passagedata pid="39" name="Aggressive3rdpig3" tags="" position="701,1700" size="100,100">NAME runs into the door with their full strength, attempting to break it down.
+&lt;%= s.namePlayer %&gt; apologises for earlier and quickly leaves the premises
+
+&lt;%
+	s.Friendly += 1
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="39" name="Aggressive3rdpig3" tags="" position="701,1701" size="100,100">&lt;%= s.namePlayer %&gt; runs into the door with their full strength, attempting to break it down.
 
 &quot;Open this door pig!&quot;
 
-Realising that they would not break in through the door, NAME changes plans and runs away from the house.
+Realising that they would not break in through the door, &lt;%= s.namePlayer %&gt; changes plans and runs away from the house.
 
-The eldest pig safely indoors, watches the events occur. NAME sprints towards the house and jumps through the window. The glass shatters on impact startling the pig.
+The eldest pig safely indoors, watches the events occur. &lt;%= s.namePlayer %&gt; sprints towards the house and jumps through the window. The glass shatters on impact startling the pig.
 
-NAME approaches the frightened pig and picks her up before swallowing her in one full gulp.</tw-passagedata><tw-passagedata pid="40" name="Aggression3rdpid2" tags="" position="326,1478" size="100,100">NAME runs into the door with their full strength, attempting to break it down.
+&lt;%= s.namePlayer %&gt; approaches the frightened pig and picks her up before swallowing her in one full gulp.
+
+&lt;%
+	s.Aggressive += 5
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="40" name="Aggression3rdpid2" tags="" position="325,1478" size="100,100">&lt;%= s.namePlayer %&gt; runs into the door with their full strength, attempting to break it down.
 
 &quot;Are you sane?!&quot; The voice screamed from the intercom.
 
-Realising that they would not break in through the door, NAME changes plans and runs away from the house.
+Realising that they would not break in through the door, &lt;%= s.namePlayer %&gt; changes plans and runs away from the house.
 
-The eldest pig safely indoors watches the events occur. NAME sprints towards the house and jumps through the window. The glass shatters on impact startling the pig.
+The eldest pig safely indoors watches the events occur. &lt;%= s.namePlayer %&gt; sprints towards the house and jumps through the window. The glass shatters on impact startling the pig.
 
-NAME approaches the frightened pig and picks her up before swallowing her in one full gulp.</tw-passagedata><tw-passagedata pid="41" name="Manipulation3rdpig2" tags="" position="525,1474" size="100,100">&quot;Now you can add me to the list&quot; NAME laughs.
+&lt;%= s.namePlayer %&gt; approaches the frightened pig and picks her up before swallowing her in one full gulp.
+
+&lt;%
+	s.Aggressive += 5
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="41" name="Manipulation3rdpig2" tags="" position="525,1474" size="100,100">&quot;Now you can add me to the list&quot; &lt;%= s.namePlayer %&gt; laughs.
 
 Tokunbo smiles while introducing herself, &quot;You mentioned brunch with my brothers?&quot;
 
@@ -431,9 +561,62 @@ Tokunbo smiles while introducing herself, &quot;You mentioned brunch with my bro
 
 &quot;Would you mind me having a quick tour of the house, just for my own pleasure&quot;
 
-Tokunbo hesitates for a moment but allows NAME into her home.
+Tokunbo hesitates for a moment but allows &lt;%= s.namePlayer %&gt; into her home.
 
-NAME smiles to themself as they enter the abode, devising a plan to steal the house deed.</tw-passagedata></tw-storydata>
+&lt;%= s.namePlayer %&gt; smiles to themself as they enter the abode, devising a plan to steal the house deed.
+
+&lt;%
+	s.Manipulation += 10
+%&gt;
+
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="42" name="Pre Ending" tags="" position="201,2046.5" size="100,100">&lt;%
+
+   print(s.Friendly);
+
+%&gt;
+
+&lt;%
+
+   print(s.Aggressive);
+
+%&gt;
+
+&lt;%
+
+   print(s.Manipulative);
+
+%&gt;
+
+&lt;% if (s.Friendly === 3 &amp;&amp; s.Aggressive === 15) { %&gt;
+	&lt;%= story.render(&#39;Friendly ending&#39;) %&gt;
+&lt;% } else if (s.Friendly === 3 &amp;&amp; s.Manipulation === 30) { %&gt;
+	&lt;%= story.render(&#39;Manipulative Ending&#39;) %&gt;
+&lt;% } else if (s.Aggressive === 15 &amp;&amp; s.Manipulation === 30) { %&gt;
+	&lt;%= story.render(&#39;Aggressive Ending&#39;) %&gt;
+	
+&lt;% } else if (s.Friendly === 6) { %&gt;
+	&lt;%= story.render(&#39;Friendly Ending&#39;) %&gt;
+&lt;% } else if (s.Aggressive === 30) { %&gt;
+	&lt;%= story.render(&#39;Aggressive Ending&#39;) %&gt;
+&lt;% } else if (s.Manipulation === 60) { %&gt;
+	&lt;%= story.render(&#39;Manipulative Ending&#39;) %&gt;
+&lt;% } %&gt;</tw-passagedata><tw-passagedata pid="43" name="Manipulation4" tags="" position="474,724.5" size="100,100">&lt;%= s.namePlayer %&gt; scans the interior of the abode and spots a family of piggies.
+
+&quot;That photo over there, who is that&quot; &lt;%= s.namePlayer %&gt; asks.
+
+Ayo starts to ramble about his beloved siblings and dearest mother.
+
+&lt;%= s.namePlayer %&gt;&#39;s eyes land on a deed placed on the wall. While Ayo drones on, &lt;%= s.namePlayer %&gt; sneakily swipes the deed.
+
+&quot;I&#39;m going to stop you there&quot; &lt;%= s.namePlayer %&gt; glances at the door &quot;I need to head out and finish my errand but thank you for your time. I&#39;ll be back&quot;
+
+Just like that, &lt;%= s.namePlayer %&gt; speed walks away from the small home
+
+&lt;%
+	s.Manipulation += 10
+%&gt;
+
+[[Look across the horizon-&gt;2nd Pig]]</tw-passagedata></tw-storydata>
 		<script>
 		(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";window.either=function(){for(var n=[],t=0;t<arguments.length;t++)if(arguments[t]instanceof Array)for(var r=0;r<arguments[t].length;r++)n.push(arguments[t][r]);else n.push(arguments[t]);return n[_.random(n.length-1)]},window.hasVisited=function(){var n=null;if(1==arguments.length)return null!=(n=window.story.passage(arguments[0]))&&window.story.history.includes(n.id);for(var t=0;t<arguments.length;t++)if(null==(n=window.story.passage(arguments[t]))||0==window.story.history.includes(n.id))return!1;return!0},window.visited=function(){for(var n=[],t=[],r=0;r<arguments.length;r++){var e=window.story.passage(arguments[r]);null!=e&&(t=window.story.history.filter(function(n){return n==e.id})),n.push(t.length)}return Math.min.apply(Math,n)},window.renderToSelector=function(n,t){var r=window.story.passage(t);null!=r&&$(n).html(r.render())},window.getStyles=function(){return $.when.apply($,$.map(arguments,function(n){return $.get(n,function(n){$("<style>"+n+"</style>").appendTo("head")})}))};
