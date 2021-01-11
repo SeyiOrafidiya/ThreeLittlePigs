@@ -282,7 +282,7 @@ The eldest pig watches the failed attempt on their monitor and notices NAME spri
 
 [[Climb onto the roof-&gt;LastAggression2]] +Aggression &lt;br&gt;
 [[Apologise-&gt;Friendly3rdpig]] +Friendliness &lt;br&gt;
-[[Laugh it off-&gt;Manipulation3rdPig]] +Aggression</tw-passagedata><tw-passagedata pid="22" name="LastFriendly" tags="" position="247,1626" size="100,100">&quot;I&#39;m &lt;%= s.namePlayer %&gt; Wolfe. I&#39;ve ran across your two brothers and wanted to say hi&quot;
+[[Laugh it off-&gt;Manipulation3rdPig]] +Manipulation</tw-passagedata><tw-passagedata pid="22" name="LastFriendly" tags="" position="247,1626" size="100,100">&quot;I&#39;m &lt;%= s.namePlayer %&gt; Wolfe. I&#39;ve ran across your two brothers and wanted to say hi&quot;
 
 &quot;... You&#39;ve said hi&quot; The intercom replies curtly.
 
@@ -573,18 +573,18 @@ Tokunbo hesitates for a moment but allows &lt;%= s.namePlayer %&gt; into her hom
 	s.Manipulation += 10
 %&gt;
 
-[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="42" name="Pre Ending" tags="" position="201,2046" size="100,100">&lt;% if (s.Friendly === 3 &amp;&amp; s.Aggressive === 15) { %&gt;
+[[Find out your ending!-&gt;Pre Ending]]</tw-passagedata><tw-passagedata pid="42" name="Pre Ending" tags="" position="201,2046" size="100,100">&lt;% if (s.Friendly &lt;= 3 &amp;&amp; s.Aggressive &lt;= 15) { %&gt;
 	&lt;%= story.render(&#39;Friendly Ending&#39;) %&gt;
-&lt;% } else if (s.Friendly === 3 &amp;&amp; s.Manipulation === 30) { %&gt;
+&lt;% } else if (s.Friendly &lt;= 3 &amp;&amp; s.Manipulation &lt;= 30) { %&gt;
 	&lt;%= story.render(&#39;Manipulative Ending&#39;) %&gt;
-&lt;% } else if (s.Aggressive === 15 &amp;&amp; s.Manipulation === 30) { %&gt;
+&lt;% } else if (s.Aggressive &lt;= 15 &amp;&amp; s.Manipulation &lt;= 30) { %&gt;
 	&lt;%= story.render(&#39;Aggressive Ending&#39;) %&gt;
 	
 &lt;% } else if (s.Friendly &lt;= 6) { %&gt;
 	&lt;%= story.render(&#39;Friendly Ending&#39;) %&gt;
-&lt;% } else if (s.Aggressive === 30) { %&gt;
+&lt;% } else if (s.Aggressive &lt;= 30) { %&gt;
 	&lt;%= story.render(&#39;Aggressive Ending&#39;) %&gt;
-&lt;% } else if (s.Manipulation === 60) { %&gt;
+&lt;% } else if (s.Manipulation &lt;= 60) { %&gt;
 	&lt;%= story.render(&#39;Manipulative Ending&#39;) %&gt;
 &lt;% } %&gt;</tw-passagedata><tw-passagedata pid="43" name="Manipulation4" tags="" position="474,724" size="100,100">&lt;%= s.namePlayer %&gt; scans the interior of the abode and spots a family of piggies.
 
